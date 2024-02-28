@@ -54,7 +54,7 @@ const storyArray = [
     {
         line:'3',
         questions:'where are you want to go?',
-        story:'hero'
+        story:'I wont to go the '
     }
     
 ]
@@ -117,21 +117,32 @@ function PicNamePhase(img){
 
 
 //question write
-function questionByPhase(line){
+function questionByPhase(line,id){
     const que = document.createElement("p");
     que.setAttribute ("class","globle-header");
+    que.setAttribute ("id",id);
     que.textContent = storyQuestionPhase(line)
-    pictuersHeader.appendChild(que)
+    if(id==1){
+        pictuersHeader.appendChild(que)
+    }
+    
+    else{
+        const que2 = document.createElement("p");
+        que2.setAttribute ("class","globle-header");
+        que2.setAttribute ("id",id);
+        que2.textContent = storyQuestionPhase(line)
+        const pictuersHeader = document.querySelector("#pic-header")
+        pictuersHeader.replaceChild(que2,pictuersHeader.children[0])
+       }
 }
 
 
-
 //story write
-function storyByPhase(line){
+function storyByPhase(line,selectedOption){
     const sto = document.createElement("span");
     sto.setAttribute ("contenteditable","true");
     sto.setAttribute ("id","storyBoard");
-    sto.textContent = storyPhase(line)
+    sto.textContent = storyPhase(line) + selectedOption+". "
     storyOut.appendChild(sto)
 }
 
@@ -146,39 +157,80 @@ function storyNameByPhase(img){
 
 
 
-cardClicked=["1"];
-
-console.log(cardClicked.length.toString())
-
-function createBoard() {
-    const selectedPic= selectPicPhase(cardClicked.length.toString())
-    
-    
-    
-    questionByPhase(cardClicked.length.toString())
-    console.log(selectedPic)
+let A=1
 
 
-    for (let i=0;  i<selectedPic.length ; i++){
-        const pic = document.createElement("img");
-        const picture = selectedPic[i].img
-        pic.setAttribute ("src", picture);
-        pic.setAttribute ("id", i);
-        pic.addEventListener("click", ClickPic );
-        pictuersOut.appendChild(pic);
-    }    
+console.log(A.toString())
+
+if( A == 1 ){
+    const selectedPic = selectPicPhase("1")
 }
 
-createBoard()
+function createBoard() {
+
+    if( A == 1 ){
+        const selectedPic = selectPicPhase(A.toString())
+        questionByPhase(A.toString(),A)
+        
+
+        for (let i=0;  i<selectedPic.length ; i++){
+            const pic = document.createElement("img");
+            const picture = selectedPic[i].img
+            pic.setAttribute ("src", picture);
+            pic.setAttribute ("id", selectedPic[i].Name);
+            pic.addEventListener("click", ClickPic );
+            pictuersOut.appendChild(pic);
+        }
+    }
+}
+
+/*function questionByPhase(line,id){
+    const que = document.createElement("p");
+    que.setAttribute ("class","globle-header");
+    que.setAttribute ("id",id);
+    que.textContent = storyQuestionPhase(line)
+    const que3 = document.getElementById(id)
+    if(id==1){
+        pictuersHeader.appendChild(que)
+    }
+    else{
+        const que2 = document.createElement("p");
+        que2.setAttribute ("class","globle-header");
+        que2.setAttribute ("id",id);
+        que2.textContent = storyQuestionPhase(line)
+        const pictuersHeader = document.querySelector("#pic-header")
+        pictuersHeader.replaceChild(que2,pictuersHeader.children[0])
+       }
+}*/
 
 function ClickPic(){
+    
     console.log("picture clicked");
     let cardId=this.getAttribute("id")
     console.log(cardId);
-   // storyByPhase(cardClicked.length.toString())
-    storyNameByPhase(selectedPic[cardId].img)
-    cardClicked.push({cardId})
-    console.log(selectedPic[cardId].img)
-    console.log(cardClicked)
+    storyByPhase(A.toString(),cardId)
+    //storyNameByPhase(selectedPic[A].name)
+
+
+    A=A+1
+    console.log(A)
+    //const selectedPic = selectPicPhase(A.toString())
+    if(A!==1){
+        questionByPhase(A.toString(),A)
+        const selectedPic = selectPicPhase(A.toString())
+        
+        for (let i=0;  i<selectedPic.length ; i++){
+            const pic2 = document.createElement("img");
+            const picture2 = selectedPic[i].img
+            pic2.setAttribute ("src", picture2);
+            pic2.setAttribute ("id", selectedPic[i].Name);
+            pic2.addEventListener("click", ClickPic );
+            const pictuersOut = document.querySelector("#PicBoard")
+            pictuersOut.replaceChild(pic2,pictuersOut.children[i]);
+        }
+    }
+
 }
+
+createBoard()
 
