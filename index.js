@@ -4,38 +4,76 @@ const storyPicArray = [
         line:'1',
         name:'hero',
         img:'images/1-hero.jpg'
-        
-
     },
     {
         line:'1',
         name:'grandMother',
-        img:'images/1-grandmother.jpg'
-        
+        img:'images/1-grandmother.jpg'    
     },
     {
         line:'1',
         name:'dog',
-        img:'images/1-dog.jpg'
-       
+        img:'images/1-dog.jpg' 
     },
     {
         line:'2',
         name:'house',
-        img:'images/2-house.jpg'
-        
+        img:'images/2-house.jpg'  
     },
     {
         line:'2',
         name:'shop',
-        img:'images/2-shop.jpg'
-        
+        img:'images/2-shop.jpg'  
     },
     {
         line:'2',
+        name:'city',
+        img:'images/3-city.jpg' 
+    },
+    {
+        line:'3',
+        name:'moon',
+        img:'images/3-moon.jpg' 
+    },
+    {
+        line:'3',
+        name:'vilage',
+        img:'images/3-vilage.jpg' 
+    },
+    {
+        line:'3',
         name:'hospital',
-        img:'images/2-hospital.jpg'
-        
+        img:'images/2-hospital.jpg'  
+    },
+    {
+        line:'4',
+        name:'bus',
+        img:'images/4-bus.jpg' 
+    },
+    {
+        line:'4',
+        name:'rocket',
+        img:'images/4-rocket.jpg' 
+    },
+    {
+        line:'4',
+        name:'ship',
+        img:'images/4-ship.jpg'  
+    },
+    {
+        line:'5',
+        name:'chimp',
+        img:'images/5-chimp.jpg'  
+    },
+    {
+        line:'5',
+        name:'friends',
+        img:'images/5-friends.jpg'  
+    },
+    {
+        line:'5',
+        name:'satan',
+        img:'images/5-satan.jpg'  
     }
 ]
 
@@ -44,17 +82,27 @@ const storyArray = [
     {
         line:'1',
         questions:'Who am I?',
-        story:'I am a '
+        story:'Hello, I am a '
     },
     {
         line:'2',
         questions:'Where are you now?',
-        story:'and now i am in the '
+        story:'Now I am in the '
     },
     {
         line:'3',
-        questions:'where are you want to go?',
-        story:'I wont to go the '
+        questions:'where do you want to go?',
+        story:'But, I want to go the '
+    },
+    {
+        line:'4',
+        questions:'How are you going?',
+        story:'I need to use a vehical to travel. Ahh, I can go by '
+    },
+    {
+        line:'5',
+        questions:'Who would you like to travel with?',
+        story:'I can not go along. I will go with the '
     }
     
 ]
@@ -62,11 +110,6 @@ const storyArray = [
 const pictuersOut = document.querySelector("#PicBoard")
 const storyOut = document.querySelector("#storyBoard")
 const pictuersHeader = document.querySelector("#pic-header")
-
-
-console.log(pictuersOut)
-console.log(storyOut)
-console.log(pictuersHeader)
 
 
 //select pictuer
@@ -155,11 +198,8 @@ function storyNameByPhase(img){
     storyOut.appendChild(stoTag)
 }
 
-
-
+// function start hear
 let A=1
-
-
 console.log(A.toString())
 
 if( A == 1 ){
@@ -184,42 +224,21 @@ function createBoard() {
     }
 }
 
-/*function questionByPhase(line,id){
-    const que = document.createElement("p");
-    que.setAttribute ("class","globle-header");
-    que.setAttribute ("id",id);
-    que.textContent = storyQuestionPhase(line)
-    const que3 = document.getElementById(id)
-    if(id==1){
-        pictuersHeader.appendChild(que)
-    }
-    else{
-        const que2 = document.createElement("p");
-        que2.setAttribute ("class","globle-header");
-        que2.setAttribute ("id",id);
-        que2.textContent = storyQuestionPhase(line)
-        const pictuersHeader = document.querySelector("#pic-header")
-        pictuersHeader.replaceChild(que2,pictuersHeader.children[0])
-       }
-}*/
-
 function ClickPic(){
     
-    console.log("picture clicked");
-    let cardId=this.getAttribute("id")
-    console.log(cardId);
-    storyByPhase(A.toString(),cardId)
-    //storyNameByPhase(selectedPic[A].name)
-
-
+    if( A<=storyArray.length ){
+        console.log("picture clicked");
+        let cardId=this.getAttribute("id")
+        console.log(cardId);
+        storyByPhase(A.toString(),cardId)
+    }
+    
     A=A+1
-    console.log(A)
-    //const selectedPic = selectPicPhase(A.toString())
-    if(A!==1){
+    if( A!==1 && A<storyArray.length+1 ){
         questionByPhase(A.toString(),A)
         const selectedPic = selectPicPhase(A.toString())
         
-        for (let i=0;  i<selectedPic.length ; i++){
+        for (let i=0;  i<=storyArray.length ; i++){
             const pic2 = document.createElement("img");
             const picture2 = selectedPic[i].img
             pic2.setAttribute ("src", picture2);
@@ -229,8 +248,11 @@ function ClickPic(){
             pictuersOut.replaceChild(pic2,pictuersOut.children[i]);
         }
     }
-
+    if(A == storyArray.length+1){
+        const sto = document.createElement("P");
+        sto.setAttribute ("class","globle-header");
+        sto.textContent = "Finished"
+        storyOut.appendChild(sto)
+    }
 }
-
 createBoard()
-
