@@ -256,3 +256,28 @@ function ClickPic(){
     }
 }
 createBoard()
+
+
+
+function reset(item) {
+    // Define the initial state of the item
+    const initialState = {
+        line: '4',
+        name: 'ship',
+        img: 'images/4-ship.jpg'
+    };
+
+    // Reset each property of the item to its initial value
+    item.line = initialState.line;
+    item.name = initialState.name;
+    item.img = initialState.img;
+}
+const item = {
+    line: '7',
+    name: 'car',
+    img: 'images/7-car.jpg'
+};
+
+console.log("Before reset:", item);
+reset(item);
+console.log("After reset:", item);
