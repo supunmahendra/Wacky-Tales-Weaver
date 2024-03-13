@@ -112,6 +112,14 @@ const storyOut = document.querySelector("#storyBoard")
 const pictuersHeader = document.querySelector("#pic-header")
 
 
+while(storyOut.lastElementChild){
+    storyOut.removeChild(storyOut.lastElementChild) 
+}
+
+
+
+
+
 //select pictuer
 function selectPicPhase(line){
     let matchedPic = storyPicArray.filter(no => no.line === line)
@@ -165,6 +173,7 @@ function questionByPhase(line,id){
     que.setAttribute ("class","globle-header");
     que.setAttribute ("id",id);
     que.textContent = storyQuestionPhase(line)
+    console.log(que)
     if(id==1){
         pictuersHeader.appendChild(que)
     }
@@ -253,31 +262,39 @@ function ClickPic(){
         sto.setAttribute ("class","globle-header");
         sto.textContent = "Finished"
         storyOut.appendChild(sto)
+
+        
     }
 }
 createBoard()
 
+const refresh = document.getElementById("reset")
+refresh.addEventListener("click", remove)
 
+//refresh function
+function remove(){
+    
+    while(storyOut.lastElementChild){
+        storyOut.removeChild(storyOut.lastElementChild) 
+    }
 
-function reset(item) {
-    // Define the initial state of the item
-    const initialState = {
-        line: '4',
-        name: 'ship',
-        img: 'images/4-ship.jpg'
-    };
+    A=1;
+    if( A==1 && A<storyArray.length+1 ){
+        while(pictuersHeader.lastElementChild){
+            pictuersHeader.removeChild(pictuersHeader.lastElementChild) 
+        }
 
-    // Reset each property of the item to its initial value
-    item.line = initialState.line;
-    item.name = initialState.name;
-    item.img = initialState.img;
+        questionByPhase(A.toString(),A)
+        const selectedPic = selectPicPhase(A.toString())
+
+        for (let i=0;  i<=storyArray.length ; i++){
+            const pic2 = document.createElement("img");
+            const picture2 = selectedPic[i].img
+            pic2.setAttribute ("src", picture2);
+            pic2.setAttribute ("id", selectedPic[i].Name);
+            pic2.addEventListener("click", ClickPic );
+            const pictuersOut = document.querySelector("#PicBoard")
+            pictuersOut.replaceChild(pic2,pictuersOut.children[i]);
+        }
+    }
 }
-const item = {
-    line: '7',
-    name: 'car',
-    img: 'images/7-car.jpg'
-};
-
-console.log("Before reset:", item);
-reset(item);
-console.log("After reset:", item);
