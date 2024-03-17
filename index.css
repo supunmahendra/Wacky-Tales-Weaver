@@ -108,7 +108,7 @@ header{
 
 .header-name1{
     margin-left: 20px;
-    font-size: 50px;
+    font-size: 4vw;
     
     font-weight: 400;
 }
@@ -116,13 +116,14 @@ header{
 .header-name2{
     margin-left: 20px;
     color:#EC2E57; 
-    font-size: 50px; 
+    font-size: 4vw; 
     font-weight: 400;
 }
 
 .header-right div div h1{
-    margin-left: 20px;
-    font-size: 20px;  
+    margin-left: 5vw;
+    font-size: 3vw; 
+      
     font-weight: 200;
 }
 
@@ -134,19 +135,20 @@ header{
     display: flex;
     grid-template-columns: 1fl 1fl;
     justify-content: space-around;
-    padding: 50px;
+    padding: 5vw;
 }
 
 .header-btn{
     display: flex;
-    height: 40px;
-    width: 250px;
+    padding: 2vw;
+    height: 20px;
+    width: 20vw;
     background-color:#1AABAC ;
-    font-size: 20px;
+    font-size: 2vw;
     color: #E6F3F1;
     align-items: center;
     justify-content: center;
-    border-radius: 5px; 
+    border-radius: 1vw; 
 }
 
 
@@ -159,7 +161,7 @@ header{
 
 .globle-title{
   
-    font-size: 50px;
+    font-size: 5vh;
     color: #EC2E57;
 }
 
@@ -183,23 +185,42 @@ header{
     border: solid #d4d6d6 ;
 }
 
-/*.globle-box-about{
+.globle-box-about{
  margin-bottom: 20px;
-}*/
+ font-size: 5vh;
+}
+
+.story{
+    font-size: 2vw;
+    line-height: 1vw;
+
+
+
+}
 
 .globle-header{
-    font-size: 30px;
+    font-size: 3vw;
     font-weight: 800;
     color: #4A4A4A;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 1vw;
+    font-size: 3vw;
+    margin-bottom: 1vw;
 }
 
 .about-container div h3{
     text-wrap: wrap;
     margin-top: 15px;
-    font-size: 20px;  
-    font-weight: 200;
+    /*font-size: 20px;  */
+    
+}
+
+.pictureClass{
+    display: grid;
+    width: 95%;
+    margin-left: auto;
+    margin-right:auto; 
+    margin-bottom: 2vw;
+    border-radius: 4vw;
 }
 
 

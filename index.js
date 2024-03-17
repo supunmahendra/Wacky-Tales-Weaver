@@ -7,7 +7,7 @@ const storyPicArray = [
     },
     {
         line:'1',
-        name:'grandMother',
+        name:'grand Mother',
         img:'images/1-grandmother.jpg'    
     },
     {
@@ -92,12 +92,12 @@ const storyArray = [
     {
         line:'3',
         questions:'where do you want to go?',
-        story:'But, I want to go the '
+        story:'But, I want to go to the '
     },
     {
         line:'4',
         questions:'How are you going?',
-        story:'I need to use a vehical to travel. Ahh, I can go by '
+        story:'I need to use a vehicle to travel. Ah, I can go by '
     },
     {
         line:'5',
@@ -194,6 +194,7 @@ function storyByPhase(line,selectedOption){
     const sto = document.createElement("span");
     sto.setAttribute ("contenteditable","true");
     sto.setAttribute ("id","storyBoard");
+    sto.setAttribute ("class","story");
     sto.textContent = storyPhase(line) + selectedOption+". "
     storyOut.appendChild(sto)
 }
@@ -226,6 +227,7 @@ function createBoard() {
             const pic = document.createElement("img");
             const picture = selectedPic[i].img
             pic.setAttribute ("src", picture);
+            pic.setAttribute ("class","pictureClass");
             pic.setAttribute ("id", selectedPic[i].Name);
             pic.addEventListener("click", ClickPic );
             pictuersOut.appendChild(pic);
@@ -251,6 +253,7 @@ function ClickPic(){
             const pic2 = document.createElement("img");
             const picture2 = selectedPic[i].img
             pic2.setAttribute ("src", picture2);
+            pic2.setAttribute ("class","pictureClass");
             pic2.setAttribute ("id", selectedPic[i].Name);
             pic2.addEventListener("click", ClickPic );
             const pictuersOut = document.querySelector("#PicBoard")
@@ -291,6 +294,7 @@ function remove(){
             const pic2 = document.createElement("img");
             const picture2 = selectedPic[i].img
             pic2.setAttribute ("src", picture2);
+            pic2.setAttribute ("class","pictureClass");
             pic2.setAttribute ("id", selectedPic[i].Name);
             pic2.addEventListener("click", ClickPic );
             const pictuersOut = document.querySelector("#PicBoard")
